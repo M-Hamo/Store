@@ -1,4 +1,7 @@
-<div *ngIf="product" class="flex justify-between items-center">
+<div
+  *ngIf="product"
+  class="flex justify-between items-center p-2 rounded-md bg-slate-200"
+>
   <div class="flex justify-start items-center">
     <span class="font-medium text-sm">{{ index + 1 }} - </span>
     <span class="font-medium text-sm">{{ product.productName }} </span>
