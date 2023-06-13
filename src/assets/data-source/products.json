@@ -5,7 +5,7 @@
     "description": "Description for product1",
     "productPrice": 123.5,
     "type": 1,
-    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
+    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
   },
   {
     "productId": 124,
@@ -29,7 +29,7 @@
     "description": "Description for product4",
     "productPrice": 124.9,
     "type": 1,
-    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
+    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
   },
   {
     "productId": 127,
@@ -37,7 +37,7 @@
     "description": "Description for product5",
     "productPrice": 0,
     "type": 2,
-    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
+    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
   },
   {
     "productId": 128,
@@ -45,7 +45,7 @@
     "description": "Description for product6",
     "productPrice": 589.5,
     "type": 1,
-    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
+    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
   },
   {
     "productId": 129,
@@ -53,7 +53,7 @@
     "description": "Description for product7",
     "productPrice": 20.2,
     "type": 2,
-    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
+    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
   },
   {
     "productId": 130,
@@ -77,6 +77,6 @@
     "description": "Description for product10",
     "productPrice": 20.5,
     "type": 1,
-    "productImg": "https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
+    "productImg": "https://cdn.shopify.com/s/files/1/1038/1798/products/Long-Tin-Can-Mock-Up-1-Free-by-MassDream_1024x1024.jpg?v=1529072551"
   }
 ]
