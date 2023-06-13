@@ -1,6 +1,6 @@
 <div
   *ngIf="product"
-  class="h-full w-full flex justify-center hover:scale-110 hover:shadow-lg ease-out duration-300 cursor-pointer"
+  class="h-full w-full flex justify-center hover:scale-105 hover:shadow-lg ease-out duration-300 cursor-pointer"
 >
   <div class="min-h-full w-full rounded-lg shadow-lg bg-white">
     <a>
@@ -47,7 +47,7 @@
           [ngClass]="{
             'bg-orange-600 , hover:bg-orange-700': product.productPrice === 0
           }"
-          class="w-[90%] bg-orange-400 hover:bg-orange-600 text-white font-bold py-[7px] rounded-full"
+          class="w-[90%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-[7px] rounded-full"
           (click)="onAddProduct.emit()"
         >
           {{
