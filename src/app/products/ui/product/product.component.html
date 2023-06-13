@@ -36,7 +36,7 @@
       <div class="flex justify-center items-center mb-3">
         <button
           *ngIf="product.type === ProductType.PHYSICAL"
-          class="w-[60%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-[7px] px-4 rounded-full"
+          class="w-[90%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-[7px] px-4 rounded-full"
           (click)="onAddProduct.emit()"
         >
           {{ "add_to_cart" | translate }}
@@ -47,7 +47,7 @@
           [ngClass]="{
             'bg-orange-600 , hover:bg-orange-700': product.productPrice === 0
           }"
-          class="w-[60%] bg-orange-400 hover:bg-orange-600 text-white font-bold py-[7px] px-4 rounded-full"
+          class="w-[90%] bg-orange-400 hover:bg-orange-600 text-white font-bold py-[7px] rounded-full"
           (click)="onAddProduct.emit()"
         >
           {{

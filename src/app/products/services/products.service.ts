@@ -66,7 +66,7 @@ export class ProductsService {
           this._translateService.instant('product_added_successfully')
         );
       } else
-        this._toasterService.error(
+        this._toasterService.warning(
           this._translateService.instant('only_free_download_msg')
         );
     }
@@ -78,7 +78,7 @@ export class ProductsService {
         ? DeletePhysicalProduct({ prod })
         : DeleteDigitalProduct({ prod })
     );
-    this._toasterService.success(
+    this._toasterService.info(
       this._translateService.instant('product_deleted_successfully')
     );
   };
