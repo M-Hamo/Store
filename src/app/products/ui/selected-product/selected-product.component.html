@@ -1,0 +1,20 @@
+<div *ngIf="product" class="flex justify-between items-center">
+  <div class="flex justify-start items-center">
+    <span class="font-medium text-sm">{{ index + 1 }} - </span>
+    <span class="font-medium text-sm">{{ product.productName }} </span>
+  </div>
+
+  <div class="flex justify-start items-center">
+    <span class="font-medium text-sm">{{ "price" | translate }}: </span>
+    <span class="font-medium text-sm">{{ product.productPrice }} </span>
+  </div>
+
+  <button
+    [matTooltip]="'remove' | translate"
+    [matTooltipPosition]="tooltipPosition"
+    class="h-7 w-7 rounded-full bg-red-100 outline-none cursor-pointer"
+    (click)="onRemoveSelectedProduct.emit()"
+  >
+    <mat-icon class="h-4 w-4 text-base text-red-600">delete</mat-icon>
+  </button>
+</div>

@@ -1,25 +1,23 @@
 <div
-  class="min-h-[40vh] flex flex-col justify-start items-streatch gap-2 border-2 border-b-gray-500 bg-white"
+  class="min-h-[40vh] flex flex-col justify-start items-streatch gap-2 p-2 border-2 border-b-gray-300 bg-white"
 >
-  <h2 class="w-full flex justify-center items-center test-center text-base">
-    Physical Products
-  </h2>
+  <strong class="w-full flex justify-center items-center test-center text-base">
+    {{ "physical_products" | translate }}
+  </strong>
 
   <ng-container *ngIf="physicalProducts().length; else noData">
-    <div
+    <selected-product
       *ngFor="let product of physicalProducts(); let index = index"
-      class="flex justify-start items-center px-2"
-    >
-      <span class="font-medium text-sm">{{ index + 1 }} - </span>
-      <span class="font-medium text-sm">{{ product.productName }} </span>
-
-      <span class="ml-4 font-medium text-sm">{{ product.productPrice }} </span>
-    </div>
+      @slideInBottom
+      [product]="product"
+      [index]="index"
+      (onDeleteSelectedProduct)="onRemoveSelectedProduct(product, index)"
+    ></selected-product>
   </ng-container>
 </div>
 
 <ng-template #noData>
   <div class="h-14 flex justify-center items-center">
-    There is no data added yet..!
+    {{ "noData" | translate }}
   </div>
 </ng-template>

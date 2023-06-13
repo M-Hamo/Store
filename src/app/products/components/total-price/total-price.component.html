@@ -1,14 +1,18 @@
-<div class="flex flex-col justify-start items-streatch gap-2 p-4 bg-white">
+<div
+  class="flex flex-col justify-start items-streatch gap-2 p-4 border-2 bg-white"
+>
   <div class="flex justify-start items-center gap-2">
-    <strong class="text-base font-semibold">Total: </strong>
+    <strong class="text-base font-semibold">{{ "total" | translate }}: </strong>
     <span class="text-base font-semibold">{{
       totalPrice() | number : "1.2-2"
     }}</span>
   </div>
 
   <div class="flex justify-end items-center">
-    <app-button [matType]="ButtonTypes.raised" [color]="ButtonColors.accent"
-      >Continue</app-button
+    <button
+      class="w-[50%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-[7px] px-4 rounded-full"
     >
+      {{ "continue" | translate }}
+    </button>
   </div>
 </div>

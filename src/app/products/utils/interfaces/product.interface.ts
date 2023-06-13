@@ -7,4 +7,5 @@ export interface ProductVm {
   productPrice: number;
   type: ProductType;
   productImg: string;
+  index?: number;
 }

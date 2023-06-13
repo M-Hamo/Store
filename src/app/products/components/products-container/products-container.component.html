@@ -1,8 +1,8 @@
 <section
-  class="relative grid md:grid-cols-10 grid-cols-2 md:gap-4 gap-2 md:p-8 p-4 bg-slate-200"
+  class="relative grid md:grid-cols-10 grid-cols-1 md:gap-4 gap-2 md:p-8 p-4 bg-slate-100"
 >
   <div
-    class="md:col-span-8 col-span-1 grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-2"
+    class="md:col-span-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:lg:grid-cols-4 grid-cols-1 md:gap-3 gap-2"
   >
     <product
       *ngFor="let product of productList()"
@@ -12,16 +12,21 @@
     ></product>
   </div>
 
-  <div class="md:col-span-2 col-span-1">
+  <div class="md:col-span-2">
     <div
-      [@animate]="{ value: '*', params: { x: '150px', delay: '250ms' } }"
-      class="min-h-[80vh] sticky top-4 w-full flex flex-col justify-start items-streatch rounded border-2 border-gray-500"
+      class="min-h-[80vh] sticky top-4 w-full flex flex-col justify-start items-streatch rounded border-2 shadow border-gray-300"
     >
-      <physical-products></physical-products>
+      <physical-products
+        [@animate]="{ value: '*', params: { x: '-150px', delay: '330ms' } }"
+      ></physical-products>
 
-      <digital-products></digital-products>
+      <digital-products
+        [@animate]="{ value: '*', params: { x: '150px', delay: '340ms' } }"
+      ></digital-products>
 
-      <total-price></total-price>
+      <total-price
+        [@animate]="{ value: '*', params: { y: '150px', delay: '350ms' } }"
+      ></total-price>
     </div>
   </div>
 </section>
