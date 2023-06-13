@@ -10,7 +10,15 @@ import { IAppState } from 'src/app/app.state';
 import {
   AddDigitalProduct,
   AddPhysicalProduct,
+  DeleteDigitalProduct,
+  DeletePhysicalProduct,
 } from '../store/products.actions';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  digitalProductsSelector,
+  physicalProductsSelector,
+  productListSelector,
+} from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -19,18 +27,18 @@ export class ProductsService {
   public constructor(
     private readonly _http: HttpClient,
     private readonly _store: Store<IAppState>,
+    private readonly _translateService: TranslateService,
     private readonly _toasterService: ToastrService
   ) {}
 
-  private readonly _productList$: Observable<ProductVm[]> = this._store.select(
-    (state: IAppState) => state.products.productsList
-  );
+  private readonly _productList$: Observable<ProductVm[]> =
+    this._store.select(productListSelector);
 
   private readonly _physicalProducts$: Observable<ProductVm[]> =
-    this._store.select((state: IAppState) => state.products.physicalProducts);
+    this._store.select(physicalProductsSelector);
 
   private readonly _digitalProducts$: Observable<ProductVm[]> =
-    this._store.select((state: IAppState) => state.products.digitalProducts);
+    this._store.select(digitalProductsSelector);
 
   public productList = toSignal(this._productList$, {
     initialValue: [] as ProductVm[],
@@ -47,17 +55,32 @@ export class ProductsService {
   public onAddToCart = (prod: ProductVm): void => {
     if (prod.type === ProductType.PHYSICAL) {
       this._store.dispatch(AddPhysicalProduct({ prod }));
-      this._toasterService.success('Product added to the cart successfully');
+      this._toasterService.success(
+        this._translateService.instant('product_added_successfully')
+      );
     }
     if (prod.type === ProductType.DIGITAL) {
       if (prod.productPrice !== 0) {
         this._store.dispatch(AddDigitalProduct({ prod }));
-        this._toasterService.success('Product added to the cart successfully');
+        this._toasterService.success(
+          this._translateService.instant('product_added_successfully')
+        );
       } else
         this._toasterService.error(
-          "Can't add this product until now, only free download"
+          this._translateService.instant('only_free_download_msg')
         );
     }
+  };
+
+  public onRemoveSelectedProduct = (prod: ProductVm): void => {
+    this._store.dispatch(
+      prod?.type === ProductType.PHYSICAL
+        ? DeletePhysicalProduct({ prod })
+        : DeleteDigitalProduct({ prod })
+    );
+    this._toasterService.success(
+      this._translateService.instant('product_deleted_successfully')
+    );
   };
 
   public readonly totalPrice: Signal<number> = computed(() =>

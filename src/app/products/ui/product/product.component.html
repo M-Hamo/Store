@@ -1,54 +1,61 @@
 <div
   *ngIf="product"
-  class="flex flex-col justify-start items-stretch shadow-md rounded p-3 bg-white"
+  class="h-full w-full flex justify-center hover:scale-110 hover:shadow-lg ease-out duration-300 cursor-pointer"
 >
-  <dir class="w-full flex justify-start items-center gap-2 p-0">
-    <span class="md:font-semibold text-sm">Name:</span>
-    <span class="md:font-semibold text-sm text-gray-700">{{
-      product.productName
-    }}</span>
-  </dir>
+  <div class="min-h-full w-full rounded-lg shadow-lg bg-white">
+    <a>
+      <img
+        class="max-h-[140px] w-full rounded-t-lg bg-cover"
+        [src]="product.productImg"
+        [alt]="product.productName"
+      />
+    </a>
 
-  <dir class="flex justify-start items-center gap-2 p-0">
-    <span class="md:font-semibold text-sm">Description:</span>
-    <span class="md:font-semibold text-xs text-gray-700">
-      {{ product.description }}
-    </span>
-  </dir>
-
-  <dir class="flex justify-start items-center gap-2 p-0">
-    <span class="md:font-semibold text-sm">price:</span>
-    <span class="md:font-semibold text-sm text-gray-700">{{
-      product.productPrice
-    }}</span>
-  </dir>
-
-  <dir class="flex justify-start items-center gap-2 p-0">
-    <span class="md:font-semibold text-sm">Type:</span>
-    <span class="md:font-semibold text-sm">{{
-      product.type === ProductType.PHYSICAL ? "Physical" : "Digital"
-    }}</span>
-  </dir>
-
-  <div class="flex justify-center items-center mt-2">
-    <app-button
-      *ngIf="product.type === ProductType.PHYSICAL"
-      [matType]="ButtonTypes.raised"
-      [color]="ButtonColors.primary"
-      (clicked)="onAddProduct.emit()"
-      >Add to cart</app-button
+    <div
+      class="flex flex-col justify-center items-stretch md:pt-6 pt-3 md:px-6 px-3"
     >
+      <div
+        class="flex justify-between items-center text-gray-800 text-base font-semibold mb-2"
+      >
+        <span>{{ product.productName }}</span>
 
-    <app-button
-      *ngIf="product.type === ProductType.DIGITAL"
-      [matType]="ButtonTypes.raised"
-      [color]="
-        product.productPrice === 0 ? ButtonColors.warn : ButtonColors.primary
-      "
-      (clicked)="onAddProduct.emit()"
-      >{{
-        product.productPrice === 0 ? "Free download" : "Add to cart"
-      }}</app-button
-    >
+        <span>{{
+          (product.type === ProductType.PHYSICAL ? "physical" : "digital")
+            | translate
+        }}</span>
+      </div>
+
+      <p class="text-gray-700 text-sm font-light mb-4 line-clamp-3">
+        {{ product.description }}
+      </p>
+
+      <h2 class="md:mt-3 mt-1 text-gray-700 font-bold text-xl">
+        ${{ product.productPrice }}
+      </h2>
+
+      <div class="flex justify-center items-center mb-3">
+        <button
+          *ngIf="product.type === ProductType.PHYSICAL"
+          class="w-[60%] bg-blue-500 hover:bg-blue-700 text-white font-bold py-[7px] px-4 rounded-full"
+          (click)="onAddProduct.emit()"
+        >
+          {{ "add_to_cart" | translate }}
+        </button>
+
+        <button
+          *ngIf="product.type === ProductType.DIGITAL"
+          [ngClass]="{
+            'bg-orange-600 , hover:bg-orange-700': product.productPrice === 0
+          }"
+          class="w-[60%] bg-orange-400 hover:bg-orange-600 text-white font-bold py-[7px] px-4 rounded-full"
+          (click)="onAddProduct.emit()"
+        >
+          {{
+            (product.productPrice === 0 ? "free_download" : "add_to_cart")
+              | translate
+          }}
+        </button>
+      </div>
+    </div>
   </div>
 </div>

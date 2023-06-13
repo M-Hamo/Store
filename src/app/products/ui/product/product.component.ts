@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonColors, ButtonTypes } from '@shared/utils/button-properties';
 import { ProductType } from '../../utils/enums/product-type.enum';
 import { ProductVm } from '../../utils/interfaces/product.interface';
 
@@ -14,8 +13,4 @@ export class ProductComponent {
   @Output() onAddProduct = new EventEmitter<unknown>();
 
   public readonly ProductType = ProductType;
-
-  public readonly ButtonTypes = ButtonTypes;
-
-  public readonly ButtonColors = ButtonColors;
 }

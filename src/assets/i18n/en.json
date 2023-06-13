@@ -1,3 +1,20 @@
 {
-  "storeApp": "Store app"
+  "storeApp": "Store app",
+  "name": "Name",
+  "remove": "Remove",
+  "description": "Description",
+  "price": "Price",
+  "type": "Type",
+  "physical": "Physical",
+  "digital": "Digital",
+  "physical_products": "Physical Products",
+  "digital_products": "Digital Products",
+  "total": "Total Price",
+  "add_to_cart": "Add to cart",
+  "free_download": "Free download",
+  "continue": "Continue",
+  "noData": "There is no data added yet..!",
+  "product_added_successfully": "Product added to the cart successfully",
+  "product_deleted_successfully": "Product deleted from the cart successfully",
+  "only_free_download_msg": "Can't add this product until now, only free download"
 }
