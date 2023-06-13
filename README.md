@@ -1,16 +1,24 @@
 # Store App (Assignments)
 
+A web application to show Products with Types(Physical - Digital) for user and the can add to the cart items.
+
 ## Technologies & Packages
 
 Project is created with:
 
-- Angular 15
+- Angular 16
+  - Using Signals
+  - Required inputs
+  - Flexible ngOnDestroy
+  - Self-closing tags
   - Standalone Components
   - Strong Typed Forms
   - Streamlined Page Title accessibility
   - Ng Optimized Image
 - Typescript
 - RxJS
+- NgRx statemanagement
+- ngx-translation
 - shared components
 - angular material
 - HTML
@@ -21,7 +29,7 @@ Project is created with:
 
 ## Clone app
 
-git clone `https://github.com/M-Hamo/Store.git`
+git clone `https://github.com/M-Hamo/store.git`
 
 ## Setup
 
@@ -36,7 +44,7 @@ Open your browser on http://localhost:2500/
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/store-app` directory.
+Run `ng build` to build the project. The build artifacts will be stored in the `docs/store` directory.
 
 ## Running unit tests
 

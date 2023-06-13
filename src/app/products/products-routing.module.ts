@@ -4,8 +4,6 @@ import { DigitalProductsComponent } from './components/digital-products/digital-
 import { PhysicalProductsComponent } from './components/physical-products/physical-products.component';
 import { ProductsContainerComponent } from './components/products-container/products-container.component';
 import { TotalPriceComponent } from './components/total-price/total-price.component';
-import { ProductComponent } from './ui/product/product.component';
-import { SelectedProductComponent } from './ui/selected-product/selected-product.component';
 
 const routes: Routes = [
   {
@@ -20,10 +18,8 @@ const routes: Routes = [
 export class productsModuleModule {
   public static Component = [
     ProductsContainerComponent,
-    ProductComponent,
     PhysicalProductsComponent,
     DigitalProductsComponent,
     TotalPriceComponent,
-    SelectedProductComponent,
   ];
 }
