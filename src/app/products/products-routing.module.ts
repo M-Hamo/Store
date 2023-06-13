@@ -5,6 +5,7 @@ import { PhysicalProductsComponent } from './components/physical-products/physic
 import { ProductsContainerComponent } from './components/products-container/products-container.component';
 import { TotalPriceComponent } from './components/total-price/total-price.component';
 import { ProductComponent } from './ui/product/product.component';
+import { SelectedProductComponent } from './ui/selected-product/selected-product.component';
 
 const routes: Routes = [
   {
@@ -23,5 +24,6 @@ export class productsModuleModule {
     PhysicalProductsComponent,
     DigitalProductsComponent,
     TotalPriceComponent,
+    SelectedProductComponent,
   ];
 }

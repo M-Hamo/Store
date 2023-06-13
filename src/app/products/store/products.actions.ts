@@ -13,6 +13,9 @@ export enum productsActionEnum {
   ADD_DIGITAL_PRODUCT = '[PRODUCTS] ADD DIGITAL PRODUCT',
   ADD_DIGITAL_PRODUCT_SUCCESS = '[PRODUCTS] ADD DIGITAL PRODUCT SUCCESS',
   ADD_DIGITAL_PRODUCT_FAIL = '[PRODUCTS] ADD DIGITAL PRODUCT FAIL',
+
+  DELETE_SELECTED_PHYSICAL_PRODUCT = '[PRODUCTS] DELETE SELECTED PHYSICAL PRODUCT',
+  DELETE_SELECTED_DIGITAL_PRODUCT = '[PRODUCTS] DELETE SELECTED DIGITAL PRODUCT',
 }
 
 export const GetProducts = createAction(productsActionEnum.GET_PRODUCTS);
@@ -31,5 +34,15 @@ export const AddPhysicalProduct = createAction(
 
 export const AddDigitalProduct = createAction(
   productsActionEnum.ADD_DIGITAL_PRODUCT,
+  props<{ prod: ProductVm }>()
+);
+
+export const DeletePhysicalProduct = createAction(
+  productsActionEnum.DELETE_SELECTED_PHYSICAL_PRODUCT,
+  props<{ prod: ProductVm }>()
+);
+
+export const DeleteDigitalProduct = createAction(
+  productsActionEnum.DELETE_SELECTED_DIGITAL_PRODUCT,
   props<{ prod: ProductVm }>()
 );
