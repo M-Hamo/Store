@@ -1,15 +1,9 @@
-<div class="flex flex-col justify-start items-streatch gap-2 p-4">
+<div class="flex flex-col justify-start items-streatch gap-2 p-4 bg-white">
   <div class="flex justify-start items-center gap-2">
     <strong class="text-base font-semibold">Total: </strong>
-    <ng-container *ngIf="totalPrice$ | async as totalPrice; else zero">
-      <span class="text-base font-semibold">{{
-        totalPrice | number : "1.2-2"
-      }}</span>
-    </ng-container>
-
-    <ng-template #zero>
-      <span class="text-base font-semibold"> 0 </span>
-    </ng-template>
+    <span class="text-base font-semibold">{{
+      totalPrice() | number : "1.2-2"
+    }}</span>
   </div>
 
   <div class="flex justify-end items-center">

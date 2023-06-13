@@ -1,12 +1,12 @@
 <section
-  class="relative grid md:grid-cols-10 grid-cols-2 md:gap-4 gap-2 md:p-8 p-4"
+  class="relative grid md:grid-cols-10 grid-cols-2 md:gap-4 gap-2 md:p-8 p-4 bg-slate-200"
 >
   <div
-    *ngIf="allProducts$ | async as allProducts"
     class="md:col-span-8 col-span-1 grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-2"
   >
     <product
-      *ngFor="let product of allProducts"
+      *ngFor="let product of productList()"
+      [@animate]="{ value: '*', params: { x: '-150px', delay: '250ms' } }"
       [product]="product"
       (onAddProduct)="onAddToCart(product)"
     ></product>
@@ -14,6 +14,7 @@
 
   <div class="md:col-span-2 col-span-1">
     <div
+      [@animate]="{ value: '*', params: { x: '150px', delay: '250ms' } }"
       class="min-h-[80vh] sticky top-4 w-full flex flex-col justify-start items-streatch rounded border-2 border-gray-500"
     >
       <physical-products></physical-products>

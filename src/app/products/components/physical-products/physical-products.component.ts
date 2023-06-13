@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Signal } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ProductVm } from '../../utils/interfaces/product.interface';
 
@@ -11,6 +10,6 @@ import { ProductVm } from '../../utils/interfaces/product.interface';
 export class PhysicalProductsComponent {
   public constructor(private readonly _productsService: ProductsService) {}
 
-  public readonly physicalProducts$: Observable<ProductVm[]> =
-    this._productsService.physicalProducts$;
+  public readonly physicalProducts: Signal<ProductVm[]> =
+    this._productsService.physicalProducts;
 }
