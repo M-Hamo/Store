@@ -1,24 +1,20 @@
 <div
-  class="min-h-[40vh] flex flex-col justify-start items-streatch gap-2 border-2 border-b-gray-500"
+  class="min-h-[40vh] flex flex-col justify-start items-streatch gap-2 border-2 border-b-gray-500 bg-white"
 >
   <h2 class="w-full flex justify-center items-center test-center text-base">
     Physical Products
   </h2>
 
-  <ng-container *ngIf="physicalProducts$ | async as physicalProducts">
-    <ng-container *ngIf="physicalProducts.length; else noData">
-      <div
-        *ngFor="let product of physicalProducts; let index = index"
-        class="flex justify-start items-center px-2"
-      >
-        <span class="font-medium text-sm">{{ index + 1 }} - </span>
-        <span class="font-medium text-sm">{{ product.productName }} </span>
+  <ng-container *ngIf="physicalProducts().length; else noData">
+    <div
+      *ngFor="let product of physicalProducts(); let index = index"
+      class="flex justify-start items-center px-2"
+    >
+      <span class="font-medium text-sm">{{ index + 1 }} - </span>
+      <span class="font-medium text-sm">{{ product.productName }} </span>
 
-        <span class="ml-4 font-medium text-sm"
-          >{{ product.productPrice }}
-        </span>
-      </div>
-    </ng-container>
+      <span class="ml-4 font-medium text-sm">{{ product.productPrice }} </span>
+    </div>
   </ng-container>
 </div>
 

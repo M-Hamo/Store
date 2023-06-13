@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { NavigationEnd, Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
@@ -23,8 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private readonly _unsubscribeAll$ = new ReplaySubject<unknown>(1);
-
-  @HostBinding('class') public bgColor = 'bg-slate-50';
 
   public ngOnInit(): void {
     this._routerObserver();

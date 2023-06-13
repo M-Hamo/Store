@@ -1,10 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, computed } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { ProductVm } from '../utils/interfaces/product.interface';
 import { ProductType } from '../utils/enums/product-type.enum';
 import { ToastrService } from 'ngx-toastr';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/app.state';
+import {
+  AddDigitalProduct,
+  AddPhysicalProduct,
+} from '../store/products.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -12,38 +18,40 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductsService {
   public constructor(
     private readonly _http: HttpClient,
+    private readonly _store: Store<IAppState>,
     private readonly _toasterService: ToastrService
-  ) {
-    this._storProducts();
-  }
+  ) {}
 
-  // Products Store
-  private readonly _productsStore: BehaviorSubject<ProductVm[]> =
-    new BehaviorSubject<ProductVm[]>([]);
+  private readonly _productList$: Observable<ProductVm[]> = this._store.select(
+    (state: IAppState) => state.products.productsList
+  );
 
-  public readonly allProducts$: Observable<ProductVm[]> =
-    this._productsStore.asObservable();
+  private readonly _physicalProducts$: Observable<ProductVm[]> =
+    this._store.select((state: IAppState) => state.products.physicalProducts);
 
-  public readonly physicalProducts: BehaviorSubject<ProductVm[]> =
-    new BehaviorSubject<ProductVm[]>([]);
+  private readonly _digitalProducts$: Observable<ProductVm[]> =
+    this._store.select((state: IAppState) => state.products.digitalProducts);
 
-  public readonly physicalProducts$: Observable<ProductVm[]> =
-    this.physicalProducts.asObservable();
+  public productList = toSignal(this._productList$, {
+    initialValue: [] as ProductVm[],
+  });
 
-  public readonly digitalProducts: BehaviorSubject<ProductVm[]> =
-    new BehaviorSubject<ProductVm[]>([]);
+  public physicalProducts = toSignal(this._physicalProducts$, {
+    initialValue: [] as ProductVm[],
+  });
 
-  public readonly digitalProducts$: Observable<ProductVm[]> =
-    this.digitalProducts.asObservable();
+  public digitalProducts = toSignal(this._digitalProducts$, {
+    initialValue: [] as ProductVm[],
+  });
 
   public onAddToCart = (prod: ProductVm): void => {
     if (prod.type === ProductType.PHYSICAL) {
-      this.physicalProducts.next([...this.physicalProducts.getValue(), prod]);
+      this._store.dispatch(AddPhysicalProduct({ prod }));
       this._toasterService.success('Product added to the cart successfully');
     }
     if (prod.type === ProductType.DIGITAL) {
       if (prod.productPrice !== 0) {
-        this.digitalProducts.next([...this.digitalProducts.getValue(), prod]);
+        this._store.dispatch(AddDigitalProduct({ prod }));
         this._toasterService.success('Product added to the cart successfully');
       } else
         this._toasterService.error(
@@ -52,13 +60,11 @@ export class ProductsService {
     }
   };
 
-  public readonly totalPrice$: Observable<number> = combineLatest([
-    this.physicalProducts$,
-    this.digitalProducts$,
-  ]).pipe(
-    map(([physicalProducts, digitalProducts]) =>
-      this._calculateTotalPrice([...physicalProducts, ...digitalProducts])
-    )
+  public readonly totalPrice: Signal<number> = computed(() =>
+    this._calculateTotalPrice([
+      ...this.physicalProducts(),
+      ...this.digitalProducts(),
+    ])
   );
 
   private _calculateTotalPrice = (prods: ProductVm[]): number =>
@@ -68,18 +74,7 @@ export class ProductsService {
       0
     );
 
-  // This func responsible for storing products to make changes with data
-  // Take(1) => Store it once i Inject the service
-  private _storProducts = (): void => {
-    this._getProducts$
-      .pipe(
-        tap((prods: ProductVm[]) => this._productsStore.next(prods)),
-        take(1)
-      )
-      .subscribe();
-  };
-
-  private _getProducts$: Observable<ProductVm[]> = this._http.get<ProductVm[]>(
+  public getProducts$: Observable<ProductVm[]> = this._http.get<ProductVm[]>(
     'assets/data-source/products.json'
   );
 }
