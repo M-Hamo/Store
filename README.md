@@ -1,6 +1,6 @@
 # Store App (Assignments)
 
-A web application to show Products with Types(Physical - Digital) for user and the can add to the cart items.
+A web application to show Products with Types (Physical - Digital) for user and then can add or remove products to the Cart.
 
 ## Technologies & Packages
 
