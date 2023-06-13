@@ -1,0 +1,54 @@
+<div
+  *ngIf="product"
+  class="flex flex-col justify-start items-stretch shadow-md rounded p-2"
+>
+  <dir class="w-full flex justify-start items-center gap-2 p-0">
+    <span class="md:font-semibold text-sm">Name:</span>
+    <span class="md:font-semibold text-sm text-gray-700">{{
+      product.productName
+    }}</span>
+  </dir>
+
+  <dir class="flex justify-start items-center gap-2 p-0">
+    <span class="md:font-semibold text-sm">Description:</span>
+    <span class="md:font-semibold text-xs text-gray-700">
+      {{ product.description }}
+    </span>
+  </dir>
+
+  <dir class="flex justify-start items-center gap-2 p-0">
+    <span class="md:font-semibold text-sm">price:</span>
+    <span class="md:font-semibold text-sm text-gray-700">{{
+      product.productPrice
+    }}</span>
+  </dir>
+
+  <dir class="flex justify-start items-center gap-2 p-0">
+    <span class="md:font-semibold text-sm">Type:</span>
+    <span class="md:font-semibold text-sm">{{
+      product.type === ProductType.PHYSICAL ? "Physical" : "Digital"
+    }}</span>
+  </dir>
+
+  <div class="flex justify-center items-center mt-2">
+    <app-button
+      *ngIf="product.type === ProductType.PHYSICAL"
+      [matType]="ButtonTypes.raised"
+      [color]="ButtonColors.primary"
+      (clicked)="onAddProduct.emit()"
+      >Add to cart</app-button
+    >
+
+    <app-button
+      *ngIf="product.type === ProductType.DIGITAL"
+      [matType]="ButtonTypes.raised"
+      [color]="
+        product.productPrice === 0 ? ButtonColors.warn : ButtonColors.primary
+      "
+      (clicked)="onAddProduct.emit()"
+      >{{
+        product.productPrice === 0 ? "Free download" : "Add to cart"
+      }}</app-button
+    >
+  </div>
+</div>
