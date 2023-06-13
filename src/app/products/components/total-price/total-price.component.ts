@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { ButtonTypes, ButtonColors } from '@shared/utils/button-properties';
-import { Observable } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { ProductType } from '../../utils/enums/product-type.enum';
 
@@ -12,8 +11,7 @@ import { ProductType } from '../../utils/enums/product-type.enum';
 export class TotalPriceComponent {
   public constructor(private readonly _productsService: ProductsService) {}
 
-  public readonly totalPrice$: Observable<number> =
-    this._productsService.totalPrice$;
+  public readonly totalPrice: Signal<number> = this._productsService.totalPrice;
 
   public readonly ProductType = ProductType;
 
