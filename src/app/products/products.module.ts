@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { productsModuleModule } from './products-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { ImagePickerComponent } from '@shared/components/image-picker/image-picker.component';
-import { StarsComponent } from '@shared/components/stars/stars.component';
+import { ProductComponent } from './ui/product/product.component';
+import { SelectedProductComponent } from './ui/selected-product/selected-product.component';
 
 @NgModule({
   declarations: [productsModuleModule.Component],
@@ -13,7 +14,8 @@ import { StarsComponent } from '@shared/components/stars/stars.component';
     productsModuleModule,
     SharedModule,
     ImagePickerComponent,
-    StarsComponent,
+    ProductComponent,
+    SelectedProductComponent,
   ],
 })
 export class productsModule {}
