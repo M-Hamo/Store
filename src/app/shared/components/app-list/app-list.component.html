@@ -1,0 +1,31 @@
+<section
+  class="h-[40vh] overflow-auto flex flex-col justify-start items-streatch gap-2 p-2 border-2 border-b-gray-300 bg-white"
+>
+  <strong
+    *ngIf="!!title"
+    class="w-full flex justify-center items-center test-center text-base"
+  >
+    {{ title | translate }}
+  </strong>
+
+  <ng-container *ngIf="items?.length; else noData">
+    <ng-container *ngFor="let item of items; let i = index; let isLast = last">
+      <ng-container
+        *ngTemplateOutlet="
+            listItem;
+            context: {
+              $implicit: item,
+              index: i,
+              isLast,
+            }
+          "
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</section>
+
+<ng-template #noData>
+  <div class="h-14 flex justify-center items-center">
+    {{ "noData" | translate }}
+  </div>
+</ng-template>

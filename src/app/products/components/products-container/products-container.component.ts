@@ -21,9 +21,22 @@ export class ProductsContainerComponent implements OnInit {
   public readonly productList: Signal<ProductVm[]> =
     this._productsService.productList;
 
+  public readonly physicalProducts: Signal<ProductVm[]> =
+    this._productsService.physicalProducts;
+
+  public readonly digitalProducts: Signal<ProductVm[]> =
+    this._productsService.digitalProducts;
+
   public ngOnInit(): void {
     this._store.dispatch(GetProducts());
   }
+
   public onAddToCart = (prod: ProductVm): void =>
     this._productsService.onAddToCart(prod);
+
+  public onRemoveSelectedProduct = (prod: ProductVm, index: number): void =>
+    this._productsService.onRemoveSelectedProduct({
+      ...prod,
+      index,
+    });
 }
