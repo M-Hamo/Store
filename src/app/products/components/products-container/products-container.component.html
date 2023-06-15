@@ -16,13 +16,35 @@
     <div
       class="min-h-[80vh] sticky top-4 w-full flex flex-col justify-start items-streatch rounded border-gray-200 mat-elevation-z2"
     >
-      <physical-products
+      <app-list
         [@animate]="{ value: '*', params: { x: '-150px', delay: '330ms' } }"
-      />
+        [items]="physicalProducts()"
+        title="physical_products"
+      >
+        <ng-template #listItem let-product let-index="index">
+          <selected-product
+            @slideInBottom
+            [product]="product"
+            [index]="index"
+            (onRemoveSelectedProduct)="onRemoveSelectedProduct(product, index)"
+          />
+        </ng-template>
+      </app-list>
 
-      <digital-products
+      <app-list
         [@animate]="{ value: '*', params: { x: '150px', delay: '340ms' } }"
-      />
+        [items]="digitalProducts()"
+        title="digital_products"
+      >
+        <ng-template #listItem let-product let-index="index">
+          <selected-product
+            @slideInTop
+            [product]="product"
+            [index]="index"
+            (onRemoveSelectedProduct)="onRemoveSelectedProduct(product, index)"
+          />
+        </ng-template>
+      </app-list>
 
       <total-price
         [@animate]="{ value: '*', params: { y: '150px', delay: '350ms' } }"
