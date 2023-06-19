@@ -11,6 +11,7 @@ Project is created with:
   - Required inputs
   - Flexible ngOnDestroy
   - Self-closing tags
+  - inject() method
   - Standalone Components
   - Strong Typed Forms
   - Streamlined Page Title accessibility
